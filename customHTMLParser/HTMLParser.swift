@@ -90,20 +90,41 @@ class HTMLParser {
                     let searchingRange = NSRange(location: affectedLocation, length: plStr.length - affectedLocation)
                     let closeTagRange = plStr.range(of: "</p>", options: NSString.CompareOptions.init(rawValue: 0), range: searchingRange)
                     for it in attributesPArray {
-                        switch it.type {
+                        let range = NSRange(location: affectedLocation, length: closeTagRange.location - affectedLocation)
+                        switch it.type.lowercased() {
                         case "color":
-                            result.addAttributes([NSAttributedString.Key.foregroundColor: UIColor(name: it.value) as Any], range: NSRange(location: affectedLocation, length: closeTagRange.location - affectedLocation))
+                            result.addAttributes([NSAttributedString.Key.foregroundColor: UIColor(name: it.value.lowercased()) as Any], range: range)
                         case "font-family":
-                            result.addAttributes([NSAttributedString.Key.font: UIFont(name: it.value, size: 19) as Any], range: NSRange(location: affectedLocation, length: closeTagRange.location - affectedLocation))
+                            result.addAttributes([NSAttributedString.Key.font: UIFont(name: it.value, size: 19) as Any], range: range)
                         case "background-color":
-                            result.addAttributes([NSAttributedString.Key.backgroundColor: UIColor(name: it.value) as Any], range: NSRange(location: affectedLocation, length: closeTagRange.location - affectedLocation))
+                            result.addAttributes([NSAttributedString.Key.backgroundColor: UIColor(name: it.value.lowercased()) as Any], range: range)
                         case "text-decoration":
-                            result.addAttributes([NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue], range: NSRange(location: affectedLocation, length: closeTagRange.location - affectedLocation))
+                            result.addAttributes([NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue], range: range)
+                        case "direction":
+                            if it.value.lowercased() == "rtl" {
+                                result.addAttributes([NSAttributedString.Key.writingDirection: NSWritingDirection.rightToLeft], range: range)
+                            }
+                            else {
+                                result.addAttributes([NSAttributedString.Key.writingDirection: NSWritingDirection.leftToRight], range: range)
+                            }
+                        case "text-align":
+                            let paragraph = NSMutableParagraphStyle()
+                            switch it.value.lowercased() {
+                            case "center":
+                                paragraph.alignment = .center
+                            case "left":
+                                paragraph.alignment = .left
+                            case "right":
+                                paragraph.alignment = .right
+                            default:
+                                print("empty")
+                            }
+                            result.addAttributes([NSAttributedString.Key.paragraphStyle: paragraph], range: range)
                         default:
                             print("empty")
                         }
                     }
-                    result.deleteCharacters(in: closeTagRange)
+                    result.replaceCharacters(in: closeTagRange, with: "\n")
                     result.deleteCharacters(in: openTagRange)
                 }
             }
