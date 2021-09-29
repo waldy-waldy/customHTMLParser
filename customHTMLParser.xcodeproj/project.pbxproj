@@ -13,6 +13,7 @@
 		183D3DD42704630800171E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183D3DD22704630800171E26 /* Main.storyboard */; };
 		183D3DD62704630900171E26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183D3DD52704630900171E26 /* Assets.xcassets */; };
 		183D3DD92704630900171E26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 183D3DD72704630900171E26 /* LaunchScreen.storyboard */; };
+		183D3DE2270464A800171E26 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D3DE1270464A800171E26 /* HTMLParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		183D3DD52704630900171E26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		183D3DD82704630900171E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		183D3DDA2704630900171E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		183D3DE1270464A800171E26 /* HTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				183D3DD52704630900171E26 /* Assets.xcassets */,
 				183D3DD72704630900171E26 /* LaunchScreen.storyboard */,
 				183D3DDA2704630900171E26 /* Info.plist */,
+				183D3DE1270464A800171E26 /* HTMLParser.swift */,
 			);
 			path = customHTMLParser;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				183D3DD12704630800171E26 /* ViewController.swift in Sources */,
+				183D3DE2270464A800171E26 /* HTMLParser.swift in Sources */,
 				183D3DCD2704630800171E26 /* AppDelegate.swift in Sources */,
 				183D3DCF2704630800171E26 /* SceneDelegate.swift in Sources */,
 			);
